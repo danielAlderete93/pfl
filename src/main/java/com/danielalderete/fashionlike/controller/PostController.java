@@ -1,13 +1,11 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.model.Post;
-import com.danielalderete.fashionlike.service.PostService;
+import com.danielalderete.fashionlike.dtos.PostDTO;
+import com.danielalderete.fashionlike.usecases.PostUseCases;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,19 +13,38 @@ import java.util.List;
 @RequestMapping(path = "/posts")
 @AllArgsConstructor
 public class PostController {
-    private PostService postService;
+    private PostUseCases postUseCases;
+
+
+    @PostMapping(path = "/new", produces = "application/json")
+    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) {
+        PostDTO newPost = postUseCases.create(postDTO);
+        return ResponseEntity.ok(newPost);
+    }
+
+    @PutMapping(path = "/update/{id}", produces = "application/json")
+    public ResponseEntity<PostDTO> updatePost(@PathVariable Long id, @RequestBody PostDTO postDTO) {
+        PostDTO newPost = postUseCases.update(postDTO, id);
+        return ResponseEntity.ok(newPost);
+    }
 
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<List<Post>> getAllPosts() {
-        List<Post> postList = postService.getAll();
+    public ResponseEntity<List<PostDTO>> getAllPosts() {
+        List<PostDTO> postList = postUseCases.findAll();
         return ResponseEntity.ok(postList);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
-    public ResponseEntity<Post> getPostById(@PathVariable Long id) {
-        Post post = postService.getById(id);
+    public ResponseEntity<PostDTO> getPostById(@PathVariable Long id) {
+        PostDTO post = postUseCases.findById(id);
         return ResponseEntity.ok(post);
+    }
+
+    @DeleteMapping(path = "/{id}", produces = "application/json")
+    public ResponseEntity<Boolean> deletePost(@PathVariable Long id) {
+        Boolean isDeleted = postUseCases.delete(id);
+        return ResponseEntity.ok(isDeleted);
     }
 
 }
