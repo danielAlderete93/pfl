@@ -33,6 +33,9 @@ public class Post implements Identificable<Long> {
     private User author;
     @OneToMany()
     private List<PostType> postType;
+    @OneToMany
+    @JoinColumn(name = "post_reactions")
+    private List<Reaction> reactions;
 
 
 }
