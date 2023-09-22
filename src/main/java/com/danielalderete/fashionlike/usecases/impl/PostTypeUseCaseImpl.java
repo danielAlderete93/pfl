@@ -1,6 +1,6 @@
 package com.danielalderete.fashionlike.usecases.impl;
 
-import com.danielalderete.fashionlike.dtos.PostTypeDTO;
+import com.danielalderete.fashionlike.dtos.req.PostTypeDTO;
 import com.danielalderete.fashionlike.mappers.Mapper;
 import com.danielalderete.fashionlike.model.PostType;
 import com.danielalderete.fashionlike.service.PostTypeService;

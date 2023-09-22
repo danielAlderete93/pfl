@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl extends AbstractGenericService<User, Long> implements UserService {
+public class UserServiceImpl extends AbstractGenericTrackableService<User, Long> implements UserService {
 
     private final UserRepository userRepository;
 

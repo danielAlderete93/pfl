@@ -1,7 +1,6 @@
 package com.danielalderete.fashionlike.usecases;
 
-import com.danielalderete.fashionlike.dtos.ReactionDTO;
-import org.springframework.stereotype.Component;
+import com.danielalderete.fashionlike.dtos.req.ReactionDTO;
 
 
 public interface ReactionUseCases extends GenericUseCases<ReactionDTO, Long> {

@@ -1,8 +1,9 @@
-package com.danielalderete.fashionlike.mappers;
+package com.danielalderete.fashionlike.mappers.req;
 
-import com.danielalderete.fashionlike.dtos.PostDTO;
-import com.danielalderete.fashionlike.dtos.PostTypeDTO;
-import com.danielalderete.fashionlike.dtos.UserDTO;
+import com.danielalderete.fashionlike.dtos.req.PostDTO;
+import com.danielalderete.fashionlike.dtos.req.PostTypeDTO;
+import com.danielalderete.fashionlike.dtos.req.UserDTO;
+import com.danielalderete.fashionlike.mappers.Mapper;
 import com.danielalderete.fashionlike.model.Post;
 import com.danielalderete.fashionlike.model.PostType;
 import com.danielalderete.fashionlike.model.User;

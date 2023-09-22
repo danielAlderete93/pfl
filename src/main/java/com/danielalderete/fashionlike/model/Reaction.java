@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity(name = "feeds")
 @Builder
-public class Reaction implements Identificable<Long> {
+public class Reaction implements IdentificableAndTrackable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -19,7 +19,7 @@ public class Reaction implements Identificable<Long> {
 
     @ManyToOne
     private User user;
-    @Column(name = "like", nullable = true)
+    @Column(name = "like")
     private Boolean like;
     @Column
     private String description;
@@ -27,6 +27,8 @@ public class Reaction implements Identificable<Long> {
     private Date createdDate;
     @Column(name = "update_date")
     private Date updatedDate;
+    @Column(name = "active", nullable = false)
+    private Boolean active;
 
 }
 
