@@ -1,6 +1,7 @@
-package com.danielalderete.fashionlike.mappers;
+package com.danielalderete.fashionlike.mappers.req;
 
-import com.danielalderete.fashionlike.dtos.PostTypeDTO;
+import com.danielalderete.fashionlike.dtos.req.PostTypeDTO;
+import com.danielalderete.fashionlike.mappers.Mapper;
 import com.danielalderete.fashionlike.model.PostType;
 import org.springframework.stereotype.Component;
 

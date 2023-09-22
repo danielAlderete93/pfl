@@ -1,6 +1,6 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.dtos.UserDTO;
+import com.danielalderete.fashionlike.dtos.req.UserDTO;
 import com.danielalderete.fashionlike.usecases.UserUseCases;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

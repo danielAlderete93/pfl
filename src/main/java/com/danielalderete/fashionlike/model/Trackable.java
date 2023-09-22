@@ -12,5 +12,9 @@ public interface Trackable {
 
     void setUpdatedDate(Date date);
 
+    void setActive(Boolean isActive);
+
+    Boolean getActive();
+
 
 }

@@ -1,4 +1,4 @@
-package com.danielalderete.fashionlike.dtos;
+package com.danielalderete.fashionlike.dtos.req;
 
 public record PostTypeDTO(
         Long id,

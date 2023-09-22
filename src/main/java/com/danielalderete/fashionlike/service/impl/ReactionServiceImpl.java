@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class ReactionServiceImpl extends AbstractGenericService<Reaction, Long> implements ReactionService {
+public class ReactionServiceImpl extends AbstractGenericTrackableService<Reaction, Long> implements ReactionService {
     private ReactionRepository repository;
 
     @Override

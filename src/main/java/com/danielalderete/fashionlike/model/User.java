@@ -3,6 +3,7 @@ package com.danielalderete.fashionlike.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity(name = "users")
 @Builder
-public class User implements Identificable<Long> {
+public class User implements IdentificableAndTrackable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
@@ -22,4 +23,12 @@ public class User implements Identificable<Long> {
     private String lastName;
     @OneToMany()
     private List<Rol> roles;
+    @Column(name = "image_path")
+    private String imagePath;
+    @Column(name = "created_date", nullable = false)
+    private Date createdDate;
+    @Column(name = "update_date", nullable = false)
+    private Date updatedDate;
+    @Column(name = "active", nullable = false)
+    private Boolean active;
 }

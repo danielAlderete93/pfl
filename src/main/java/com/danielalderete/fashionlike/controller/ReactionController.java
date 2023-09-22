@@ -1,7 +1,8 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.dtos.ReactionDTO;
+import com.danielalderete.fashionlike.dtos.req.ReactionDTO;
 import com.danielalderete.fashionlike.usecases.ReactionUseCases;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/reactions")
+@AllArgsConstructor
 public class ReactionController {
 
     private ReactionUseCases useCase;

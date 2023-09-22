@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class PostServiceImpl extends AbstractGenericService<Post, Long> implements PostService {
+public class PostServiceImpl extends AbstractGenericTrackableService<Post, Long> implements PostService {
     private PostRepository postRepository;
 
     @Override

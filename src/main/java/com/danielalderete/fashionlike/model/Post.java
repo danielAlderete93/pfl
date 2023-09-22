@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity(name = "posts")
 @Builder
-public class Post implements Identificable<Long> {
+public class Post implements IdentificableAndTrackable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)

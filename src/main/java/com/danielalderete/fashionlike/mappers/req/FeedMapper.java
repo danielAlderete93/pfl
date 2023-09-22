@@ -1,6 +1,7 @@
-package com.danielalderete.fashionlike.mappers;
+package com.danielalderete.fashionlike.mappers.req;
 
-import com.danielalderete.fashionlike.dtos.ReactionDTO;
+import com.danielalderete.fashionlike.dtos.req.ReactionDTO;
+import com.danielalderete.fashionlike.mappers.Mapper;
 import com.danielalderete.fashionlike.model.Reaction;
 import org.springframework.stereotype.Component;
 
