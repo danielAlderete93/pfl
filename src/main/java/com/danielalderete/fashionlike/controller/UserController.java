@@ -1,6 +1,7 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.dtos.req.UserDTO;
+import com.danielalderete.fashionlike.dtos.req.UserRequestDTO;
+import com.danielalderete.fashionlike.dtos.res.UserResponseDTO;
 import com.danielalderete.fashionlike.usecases.UserUseCases;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,27 +18,27 @@ public class UserController {
 
 
     @PostMapping(path = "/new", produces = "application/json")
-    public ResponseEntity<UserDTO> createPostType(@RequestBody UserDTO userDTO) {
-        UserDTO userCreated = useCase.create(userDTO);
+    public ResponseEntity<UserResponseDTO> createPostType(@RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userCreated = useCase.create(userRequestDTO);
         return ResponseEntity.ok(userCreated);
     }
 
     @PutMapping(path = "/update/{id}", produces = "application/json")
-    public ResponseEntity<UserDTO> updatePostType(@PathVariable Long id, @RequestBody UserDTO userDTO) {
-        UserDTO userUpdated = useCase.update(userDTO, id);
+    public ResponseEntity<UserResponseDTO> updatePostType(@PathVariable Long id, @RequestBody UserRequestDTO userRequestDTO) {
+        UserResponseDTO userUpdated = useCase.update(userRequestDTO, id);
         return ResponseEntity.ok(userUpdated);
     }
 
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<List<UserDTO>> getAllPostTypes() {
-        List<UserDTO> userList = useCase.findAll();
+    public ResponseEntity<List<UserResponseDTO>> getAllPostTypes() {
+        List<UserResponseDTO> userList = useCase.findAll();
         return ResponseEntity.ok(userList);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
-    public ResponseEntity<UserDTO> getPostTypeById(@PathVariable Long id) {
-        UserDTO userFound = useCase.findById(id);
+    public ResponseEntity<UserResponseDTO> getPostTypeById(@PathVariable Long id) {
+        UserResponseDTO userFound = useCase.findById(id);
         return ResponseEntity.ok(userFound);
     }
 
