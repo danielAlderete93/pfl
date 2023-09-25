@@ -6,45 +6,47 @@ import com.danielalderete.fashionlike.usecases.GenericUseCases;
 
 import java.util.List;
 
-public abstract class AbstractGenericCrudUseCases<SERVICE extends GenericService<MODEL, ID>, MODEL, DTO, ID> implements GenericUseCases<DTO, ID> {
+public abstract class AbstractGenericCrudUseCases<SERVICE extends GenericService<MODEL, ID>, MODEL, REQ, RES, ID> implements GenericUseCases<REQ, RES, ID> {
 
-    protected abstract Mapper<MODEL, DTO> getMapper();
+    protected abstract Mapper<MODEL, REQ> getMapperRequest();
+
+    protected abstract Mapper<MODEL, RES> getMapperResponse();
 
     protected abstract SERVICE getService();
 
     @Override
-    public DTO create(DTO dto) {
-        MODEL model = getMapper().toModel(dto);
+    public RES create(REQ REQ) {
+        MODEL model = getMapperRequest().toModel(REQ);
 
         MODEL modelCreated = this.getService().create(model);
 
-        return getMapper().toDTO(modelCreated);
+        return getMapperResponse().toDTO(modelCreated);
     }
 
     @Override
-    public DTO update(DTO dto, ID id) {
-        MODEL modelToEdit = getMapper().toModel(dto);
+    public RES update(REQ REQ, ID id) {
+        MODEL modelToEdit = getMapperRequest().toModel(REQ);
 
-        MODEL modelCreated = this.getService().update(modelToEdit, id);
+        MODEL modelUpdated = this.getService().update(modelToEdit, id);
 
-        return getMapper().toDTO(modelCreated);
+        return getMapperResponse().toDTO(modelUpdated);
     }
 
     @Override
-    public DTO findById(ID id) {
+    public RES findById(ID id) {
         MODEL modelFounded = this.getService().getById(id);
         if (modelFounded == null) {
             return null;
         }
-        return this.getMapper().toDTO(modelFounded);
+        return getMapperResponse().toDTO(modelFounded);
 
     }
 
     @Override
-    public List<DTO> findAll() {
+    public List<RES> findAll() {
         List<MODEL> modelList = this.getService().getAll();
 
-        return modelList.stream().map(model -> getMapper().toDTO(model)).toList();
+        return modelList.stream().map(model -> getMapperResponse().toDTO(model)).toList();
     }
 
     @Override

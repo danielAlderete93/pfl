@@ -1,15 +1,15 @@
-package com.danielalderete.fashionlike.mappers.req;
+package com.danielalderete.fashionlike.mappers.res;
 
-import com.danielalderete.fashionlike.dtos.req.ReactionDTO;
+import com.danielalderete.fashionlike.dtos.res.ReactionResponseDTO;
 import com.danielalderete.fashionlike.mappers.Mapper;
 import com.danielalderete.fashionlike.model.Reaction;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FeedMapper implements Mapper<Reaction, ReactionDTO> {
+public class FeedResponseMapper implements Mapper<Reaction, ReactionResponseDTO> {
     @Override
-    public ReactionDTO toDTO(Reaction reaction) {
-        return new ReactionDTO(
+    public ReactionResponseDTO toDTO(Reaction reaction) {
+        return new ReactionResponseDTO(
                 reaction.getUser().getId(),
                 reaction.getLike(),
                 reaction.getDescription(),
@@ -19,7 +19,7 @@ public class FeedMapper implements Mapper<Reaction, ReactionDTO> {
     }
 
     @Override
-    public Reaction toModel(ReactionDTO feedDTO) {
+    public Reaction toModel(ReactionResponseDTO feedDTO) {
         throw new UnsupportedOperationException();
     }
 }

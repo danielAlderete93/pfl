@@ -2,15 +2,15 @@ package com.danielalderete.fashionlike.usecases;
 
 import java.util.List;
 
-public interface GenericUseCases<DTO, ID> {
+public interface GenericUseCases<REQ, RES, ID> {
 
-    DTO create(DTO dto);
+    RES create(REQ dto);
 
-    DTO update(DTO dto, ID id);
+    RES update(REQ dto, ID id);
 
-    DTO findById(ID id);
+    RES findById(ID id);
 
-    List<DTO> findAll();
+    List<RES> findAll();
 
     boolean delete(ID id);
 

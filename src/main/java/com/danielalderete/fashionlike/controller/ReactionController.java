@@ -1,6 +1,7 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.dtos.req.ReactionDTO;
+import com.danielalderete.fashionlike.dtos.req.ReactionRequestDTO;
+import com.danielalderete.fashionlike.dtos.res.ReactionResponseDTO;
 import com.danielalderete.fashionlike.usecases.ReactionUseCases;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,27 +18,27 @@ public class ReactionController {
 
 
     @PostMapping(path = "/new", produces = "application/json")
-    public ResponseEntity<ReactionDTO> createPostType(@RequestBody ReactionDTO reactionDTO) {
-        ReactionDTO reactionCreated = useCase.create(reactionDTO);
+    public ResponseEntity<ReactionResponseDTO> createPostType(@RequestBody ReactionRequestDTO reactionRequestDTO) {
+        ReactionResponseDTO reactionCreated = useCase.create(reactionRequestDTO);
         return ResponseEntity.ok(reactionCreated);
     }
 
     @PutMapping(path = "/update/{id}", produces = "application/json")
-    public ResponseEntity<ReactionDTO> updatePostType(@PathVariable Long id, @RequestBody ReactionDTO reactionDTO) {
-        ReactionDTO reactionUpdated = useCase.update(reactionDTO, id);
+    public ResponseEntity<ReactionResponseDTO> updatePostType(@PathVariable Long id, @RequestBody ReactionRequestDTO reactionRequestDTO) {
+        ReactionResponseDTO reactionUpdated = useCase.update(reactionRequestDTO, id);
         return ResponseEntity.ok(reactionUpdated);
     }
 
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<List<ReactionDTO>> getAllPostTypes() {
-        List<ReactionDTO> reactionList = useCase.findAll();
+    public ResponseEntity<List<ReactionResponseDTO>> getAllPostTypes() {
+        List<ReactionResponseDTO> reactionList = useCase.findAll();
         return ResponseEntity.ok(reactionList);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
-    public ResponseEntity<ReactionDTO> getPostTypeById(@PathVariable Long id) {
-        ReactionDTO reactionFound = useCase.findById(id);
+    public ResponseEntity<ReactionResponseDTO> getPostTypeById(@PathVariable Long id) {
+        ReactionResponseDTO reactionFound = useCase.findById(id);
         return ResponseEntity.ok(reactionFound);
     }
 

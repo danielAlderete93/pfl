@@ -1,9 +1,9 @@
-package com.danielalderete.fashionlike.dtos.req;
+package com.danielalderete.fashionlike.dtos.res;
 
 import java.util.Date;
 import java.util.List;
 
-public record PostDTO(
+public record PostResponseDTO(
         Long id,
         String title,
         String description,
@@ -11,7 +11,7 @@ public record PostDTO(
         Date createdDate,
         Date updatedDate,
         Boolean active,
-        UserDTO author,
-        List<PostTypeDTO> postType
+        UserResponseDTO author,
+        List<PostTypeResponseDTO> postType
 ) {
 }

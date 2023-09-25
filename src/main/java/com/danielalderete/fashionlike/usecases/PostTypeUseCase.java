@@ -1,6 +1,7 @@
 package com.danielalderete.fashionlike.usecases;
 
-import com.danielalderete.fashionlike.dtos.req.PostTypeDTO;
+import com.danielalderete.fashionlike.dtos.req.PostTypeRequestDTO;
+import com.danielalderete.fashionlike.dtos.res.PostTypeResponseDTO;
 
-public interface PostTypeUseCase extends GenericUseCases<PostTypeDTO, Long> {
+public interface PostTypeUseCase extends GenericUseCases<PostTypeRequestDTO, PostTypeResponseDTO, Long> {
 }

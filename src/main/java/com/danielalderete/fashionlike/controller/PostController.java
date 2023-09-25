@@ -1,6 +1,7 @@
 package com.danielalderete.fashionlike.controller;
 
-import com.danielalderete.fashionlike.dtos.req.PostDTO;
+import com.danielalderete.fashionlike.dtos.req.PostRequestDTO;
+import com.danielalderete.fashionlike.dtos.res.PostResponseDTO;
 import com.danielalderete.fashionlike.usecases.PostUseCases;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,28 +18,28 @@ public class PostController {
 
 
     @PostMapping(path = "/new", produces = "application/json")
-    public ResponseEntity<PostDTO> createPost(@RequestBody PostDTO postDTO) {
-        PostDTO newPost = postUseCases.create(postDTO);
-        return ResponseEntity.ok(newPost);
+    public ResponseEntity<PostResponseDTO> createPost(@RequestBody PostRequestDTO postRequestDTO) {
+        PostResponseDTO postCreated = postUseCases.create(postRequestDTO);
+        return ResponseEntity.ok(postCreated);
     }
 
     @PutMapping(path = "/update/{id}", produces = "application/json")
-    public ResponseEntity<PostDTO> updatePost(@PathVariable Long id, @RequestBody PostDTO postDTO) {
-        PostDTO newPost = postUseCases.update(postDTO, id);
-        return ResponseEntity.ok(newPost);
+    public ResponseEntity<PostResponseDTO> updatePost(@PathVariable Long id, @RequestBody PostRequestDTO postRequestDTO) {
+        PostResponseDTO postUpdated = postUseCases.update(postRequestDTO, id);
+        return ResponseEntity.ok(postUpdated);
     }
 
 
     @GetMapping(path = "/all", produces = "application/json")
-    public ResponseEntity<List<PostDTO>> getAllPosts() {
-        List<PostDTO> postList = postUseCases.findAll();
+    public ResponseEntity<List<PostResponseDTO>> getAllPosts() {
+        List<PostResponseDTO> postList = postUseCases.findAll();
         return ResponseEntity.ok(postList);
     }
 
     @GetMapping(path = "/{id}", produces = "application/json")
-    public ResponseEntity<PostDTO> getPostById(@PathVariable Long id) {
-        PostDTO post = postUseCases.findById(id);
-        return ResponseEntity.ok(post);
+    public ResponseEntity<PostResponseDTO> getPostById(@PathVariable Long id) {
+        PostResponseDTO postFounded = postUseCases.findById(id);
+        return ResponseEntity.ok(postFounded);
     }
 
     @DeleteMapping(path = "/{id}", produces = "application/json")

@@ -1,6 +1,6 @@
 package com.danielalderete.fashionlike.dtos.req;
 
-public record PostTypeDTO(
+public record PostTypeRequestDTO(
         Long id,
         String name,
         String description
